@@ -1,6 +1,6 @@
 # Processador Pipeline - Mips
 
-<img src="images/pipeline.png" alt="Pipeline">
+![Pipeline](images/pipeline.png)
 
 ## Descrição Geral
 
@@ -130,7 +130,7 @@ Responsável por buscar a instrução da memória de instruções com base no va
 
 ### PC
 
-<img src="images/pc.png" alt="Pipeline">
+![Pipeline](images/pc.png)
 
 Circuito que escolhe o próximo valor do PC com base na instrução:
 
@@ -141,7 +141,7 @@ Circuito que escolhe o próximo valor do PC com base na instrução:
 
 ### Instruction Memory
 
-<img src="images/instructionmem.png" alt="Pipeline">
+![Pipeline](images/instructionmem.png)
 
 Memória que armazena todas as instruções do programa. O endereço do PC é usado para buscar a instrução atual.
 
@@ -153,25 +153,25 @@ Responsável por decodificar a instrução, ler os registradores e gerar os sina
 
 ### Instruction Decompose
 
-<img src="images/id.png" alt="Pipeline">
+![Pipeline](images/id.png)
 
 A instrução é decomposta em seus campos: `opcode`, `rs`, `rt`, `rd`, `shamt`, `funct`, etc., por meio de splitters (separadores de bits).
 
 ### Banco de Registradores
 
-<img src="images/br.png" alt="Pipeline">
+![Pipeline](images/br.png)
 
 Circuito que armazena e fornece os valores dos registradores especificados em `rs` e `rt`.
 
 ### Forward Unit 2
 
-<img src="images/forward2.png" alt="Pipeline">
+![Pipeline](images/forward2.png)
 
 Detecta quando uma instrução está tentando ler um registrador que outra instrução ainda não escreveu, permitindo o encaminhamento de dados diretamente da etapa `WB`.
 
 ### Unidade de Controle (UC)
 
-<img src="images/uc.png" alt="Pipeline">
+![Pipeline](images/uc.png)
 
 Gera os sinais de controle com base no `opcode`:
 
@@ -186,7 +186,7 @@ Executa operações aritméticas, lógicas e cálculos de endereço de memória.
 
 ### ALU Mux Control
 
-<img src="images/alumuxcontrol.png" alt="Pipeline">
+![Pipeline](images/alumuxcontrol.png)
 
 Multiplexadores escolhem os operandos da ALU:
 
@@ -195,20 +195,20 @@ Multiplexadores escolhem os operandos da ALU:
 
 ### ALU Control ULA
 
-<img src="images/ula.png" alt="Pipeline">
-<img src="images/alucontrol.png" alt="Pipeline">
+![Pipeline](images/ula.png)
+![Pipeline](images/alucontrol.png)
 
 A ULA realiza operações como soma, subtração, comparação, etc., com base nos sinais da `ALU Control`.
 
 ### PC Encode
 
-<img src="images/pc_encode.png" alt="Pipeline">
+![Pipeline](images/pc_encode.png)
 
 Codifica o endereço de destino para instruções do tipo `Jump`.
 
 ### Wr/Out
 
-<img src="images/wrout.png" alt="Pipeline">
+![Pipeline](images/wrout.png)
 
 Escolhe qual registrador receberá o resultado:
 
@@ -222,13 +222,13 @@ Executa leitura ou escrita na memória de dados, dependendo da instrução.
 
 ### Decide Branch
 
-<img src="images/decidebranch.png" alt="Pipeline">
+![Pipeline](images/decidebranch.png)
 
 Verifica condições de desvio (`BEQ`, `BNE`) e sinaliza se o PC deve ser alterado.
 
 ### Data Memory
 
-<img src="images/datamem.png" alt="Pipeline">
+![Pipeline](images/datamem.png)
 
 Memória onde ocorrem as operações `LW` (leitura) e `SW` (escrita) com base no resultado da ULA.
 
@@ -240,7 +240,7 @@ Memória onde ocorrem as operações `LW` (leitura) e `SW` (escrita) com base no
 
 ### Mux WB
 
-<img src="images/wbmux.png" alt="Pipeline">
+![Pipeline](images/wbmux.png)
 
 Multiplexador decide entre o valor vindo da ULA ou da memória (`LW`) para escrita no registrador destino.
 
@@ -248,7 +248,7 @@ Multiplexador decide entre o valor vindo da ULA ou da memória (`LW`) para escri
 
 ## Forwarding Unit
 
-<img src="images/forward.png" alt="Pipeline">
+![Pipeline](images/forward.png)
 
 Resolve dependências de dados ao permitir que os valores que ainda não foram gravados no banco de registradores sejam usados diretamente pelas instruções seguintes.
 
@@ -256,7 +256,7 @@ Resolve dependências de dados ao permitir que os valores que ainda não foram g
 
 ## Hazard Unit
 
-<img src="images/hazard.png" alt="Pipeline">
+![Pipeline](images/hazard.png)
 
 Detecta e resolve *data hazards* críticos, especialmente após instruções `LW`. Quando necessário, insere bolhas no pipeline, pausando o `PC` e limpando o registrador `ID/EX`.
 
